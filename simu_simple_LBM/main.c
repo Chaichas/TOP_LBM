@@ -60,7 +60,7 @@ FILE * open_output_file(lbm_comm_t * mesh_comm)
 
 void close_file(FILE* fp){
 	//wait all before closing
-	MPI_Barrier(MPI_COMM_WORLD);
+	//MPI_Barrier(MPI_COMM_WORLD);
 	//close file
 	fclose(fp);
 }
@@ -172,7 +172,8 @@ int main(int argc, char * argv[])
 	{
 		//print progress
 		if( rank == RANK_MASTER )
-			printf("Progress [%5d / %5d]\n",i,ITERATIONS);
+			//printf("Progress [%5d / %5d]\n",i,ITERATIONS);
+			fprintf(stderr, "Progress [%5d / %5d]\n",i,ITERATIONS);
 
 		//compute special actions (border, obstacle...)
 		special_cells( &mesh, &mesh_type, &mesh_comm);
@@ -196,12 +197,16 @@ int main(int argc, char * argv[])
 		//save step
 		if ( i % WRITE_STEP_INTERVAL == 0 && lbm_gbl_config.output_filename != NULL )
 			save_frame_all_domain(fp, &mesh, &temp_render );
+		
+		fprintf(stderr, "rank %d: Before end of loop \n", rank);
 	}
 
 	if( rank == RANK_MASTER && fp != NULL)
 	{
 		close_file(fp);
 	}
+
+	fprintf(stderr, "rank %d: After closing the file \n", rank);
 
 	//free memory
 	lbm_comm_release( &mesh_comm );
