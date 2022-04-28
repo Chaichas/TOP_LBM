@@ -76,14 +76,15 @@ void lbm_comm_init( lbm_comm_t * mesh_comm, int rank, int comm_size, int width, 
 	int rank_y;
 
 	//compute splitting
-	//nb_y = lbm_helper_pgcd(comm_size,width);
-	//nb_x = comm_size / nb_y;
-
-	//Vertical
+	//Version incoherente
+	/* nb_y = lbm_helper_pgcd(comm_size,width);
+	nb_x = comm_size/nb_y; */
+	
+	// Version coherente
 	nb_x = lbm_helper_pgcd(comm_size,width);
 	nb_y = comm_size / nb_x;
 
-	//Horizental
+	//Horizontal
 	// nb_y = lbm_helper_pgcd(comm_size,height);
 	// nb_x = comm_size / nb_x;
 

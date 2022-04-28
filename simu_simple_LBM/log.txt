@@ -1,0 +1,7 @@
+File /home/aicha/Downloads/test_philosophers/philosophers.otf
+
+
+Warnings :
+0 : DefVersion definition is actually not handled in ViTE
+
+Your trace has 0 errors and 1 warnings.

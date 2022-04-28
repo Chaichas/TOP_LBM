@@ -20,11 +20,11 @@ void Mesh_init( Mesh * mesh, int width,  int height )
 	//mesh->cells = NULL;
 
 	//errors
-	/*if( mesh->cells == NULL )
+	if( mesh->cells == NULL )
 	{
 		perror( "malloc" );
 		abort();
-	}*/
+	}
 }
 
 /*******************  FUNCTION  *********************/
