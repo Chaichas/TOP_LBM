@@ -172,8 +172,8 @@ int main(int argc, char * argv[])
 	{
 		//print progress
 		if( rank == RANK_MASTER )
-			//printf("Progress [%5d / %5d]\n",i,ITERATIONS);
-			fprintf(stderr, "Progress [%5d / %5d]\n",i,ITERATIONS);
+			printf("Progress [%5d / %5d]\n",i,ITERATIONS);
+			//fprintf(stderr, "Progress [%5d / %5d]\n",i,ITERATIONS);
 
 		//compute special actions (border, obstacle...)
 		special_cells( &mesh, &mesh_type, &mesh_comm);
