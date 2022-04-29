@@ -1,0 +1,390 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 22.79     16.51    16.51 208768000     0.00     0.00  get_cell_velocity
+ 14.90     27.31    10.80 3692927008     0.00     0.00  get_vect_norme_2
+ 14.64     37.92    10.61     1599     6.64    10.41  propagation
+ 13.48     47.69     9.77 1844415504     0.00     0.00  compute_equilibrium_profile
+ 13.28     57.32     9.63 204672000     0.00     0.00  compute_cell_collision
+  9.26     64.03     6.71 4131772827     0.00     0.00  Mesh_get_cell
+  7.21     69.26     5.22 208768000     0.00     0.00  get_cell_density
+  2.62     71.16     1.90 204672000     0.00     0.00  lbm_cell_type_t_get_cell
+  1.03     71.90     0.75                             main
+  0.44     72.22     0.32     1599     0.20     1.47  special_cells
+  0.21     72.37     0.15     1599     0.09    32.70  collision
+  0.18     72.50     0.13  1440699     0.00     0.00  compute_bounce_back
+  0.03     72.52     0.02       32     0.63    14.33  save_frame
+  0.03     72.54     0.02        2    10.01    23.04  setup_init_state_global_poiseuille_profile
+  0.00     72.54     0.00  8192000     0.00     0.00  Mesh_get_cell
+  0.00     72.54     0.00  2369946     0.00     0.00  lbm_cell_type_t_get_cell
+  0.00     72.54     0.00  2367504     0.00     0.00  Mesh_get_cell
+  0.00     72.54     0.00  2338632     0.00     0.00  helper_compute_poiseuille
+  0.00     72.54     0.00    15990     0.00     0.00  lbm_comm_sync_ghosts_diagonal
+  0.00     72.54     0.00     9594     0.00     0.00  lbm_comm_sync_ghosts_horizontal
+  0.00     72.54     0.00     6396     0.00     0.00  lbm_comm_sync_ghosts_vertical
+  0.00     72.54     0.00     1599     0.00     0.00  lbm_comm_ghost_exchange
+  0.00     72.54     0.00       32     0.00    14.33  save_frame_all_domain
+  0.00     72.54     0.00        8     0.00     0.00  helper_get_rank_id
+  0.00     72.54     0.00        4     0.00     0.00  lbm_comm_height
+  0.00     72.54     0.00        4     0.00     0.00  lbm_comm_width
+  0.00     72.54     0.00        3     0.00     0.00  Mesh_init
+  0.00     72.54     0.00        3     0.00     0.00  Mesh_release
+  0.00     72.54     0.00        2     0.00    23.20  setup_init_state
+  0.00     72.54     0.00        2     0.00     0.16  setup_init_state_border
+  0.00     72.54     0.00        2     0.00     0.00  setup_init_state_circle_obstacle
+  0.00     72.54     0.00        1     0.00     0.00  close_file
+  0.00     72.54     0.00        1     0.00     0.00  lbm_comm_init
+  0.00     72.54     0.00        1     0.00     0.00  lbm_comm_print
+  0.00     72.54     0.00        1     0.00     0.00  lbm_comm_release
+  0.00     72.54     0.00        1     0.00     0.00  lbm_helper_pgcd
+  0.00     72.54     0.00        1     0.00     0.00  lbm_mesh_type_t_init
+  0.00     72.54     0.00        1     0.00     0.00  lbm_mesh_type_t_release
+  0.00     72.54     0.00        1     0.00     0.00  load_config
+  0.00     72.54     0.00        1     0.00     0.00  open_output_file
+  0.00     72.54     0.00        1     0.00     0.00  print_config
+  0.00     72.54     0.00        1     0.00     0.00  setup_default_values
+  0.00     72.54     0.00        1     0.00     0.00  update_derived_parameter
+  0.00     72.54     0.00        1     0.00     0.00  write_file_header
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.01% of 72.54 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.75   71.80                 main [1]
+                0.15   52.14    1599/1599        collision [2]
+               10.61    6.04    1599/1599        propagation [5]
+                0.32    2.03    1599/1599        special_cells [10]
+                0.00    0.46      32/32          save_frame_all_domain [13]
+                0.00    0.05       2/2           setup_init_state [15]
+                0.00    0.00    1599/1599        lbm_comm_ghost_exchange [25]
+                0.00    0.00       4/4           lbm_comm_height [27]
+                0.00    0.00       4/4           lbm_comm_width [28]
+                0.00    0.00       3/3           Mesh_init [29]
+                0.00    0.00       3/3           Mesh_release [30]
+                0.00    0.00       1/1           load_config [39]
+                0.00    0.00       1/1           print_config [41]
+                0.00    0.00       1/1           lbm_comm_init [33]
+                0.00    0.00       1/1           lbm_mesh_type_t_init [37]
+                0.00    0.00       1/1           open_output_file [40]
+                0.00    0.00       1/1           close_file [32]
+                0.00    0.00       1/1           lbm_comm_release [35]
+                0.00    0.00       1/1           lbm_mesh_type_t_release [38]
+-----------------------------------------------
+                0.15   52.14    1599/1599        main [1]
+[2]     72.1    0.15   52.14    1599         collision [2]
+                9.63   41.84 204672000/204672000     compute_cell_collision [3]
+                0.66    0.00 409344000/4131772827     Mesh_get_cell [8]
+-----------------------------------------------
+                9.63   41.84 204672000/204672000     collision [2]
+[3]     71.0    9.63   41.84 204672000         compute_cell_collision [3]
+                9.76   10.77 1842048000/1844415504     compute_equilibrium_profile [4]
+               16.19    0.00 204672000/208768000     get_cell_velocity [6]
+                5.12    0.00 204672000/208768000     get_cell_density [9]
+-----------------------------------------------
+                0.00    0.00   28872/1844415504     setup_init_state_border [17]
+                0.01    0.01 2338632/1844415504     setup_init_state_global_poiseuille_profile [16]
+                9.76   10.77 1842048000/1844415504     compute_cell_collision [3]
+[4]     28.3    9.77   10.79 1844415504         compute_equilibrium_profile [4]
+               10.79    0.00 3688831008/3692927008     get_vect_norme_2 [7]
+-----------------------------------------------
+               10.61    6.04    1599/1599        main [1]
+[5]     23.0   10.61    6.04    1599         propagation [5]
+                6.04    0.00 3720988128/4131772827     Mesh_get_cell [8]
+-----------------------------------------------
+                0.32    0.00 4096000/208768000     save_frame [12]
+               16.19    0.00 204672000/208768000     compute_cell_collision [3]
+[6]     22.8   16.51    0.00 208768000         get_cell_velocity [6]
+-----------------------------------------------
+                0.01    0.00 4096000/3692927008     save_frame [12]
+               10.79    0.00 3688831008/3692927008     compute_equilibrium_profile [4]
+[7]     14.9   10.80    0.00 3692927008         get_vect_norme_2 [7]
+-----------------------------------------------
+                0.00    0.00 1440699/4131772827     special_cells [10]
+                0.66    0.00 409344000/4131772827     collision [2]
+                6.04    0.00 3720988128/4131772827     propagation [5]
+[8]      9.3    6.71    0.00 4131772827         Mesh_get_cell [8]
+-----------------------------------------------
+                0.10    0.00 4096000/208768000     save_frame [12]
+                5.12    0.00 204672000/208768000     compute_cell_collision [3]
+[9]      7.2    5.22    0.00 208768000         get_cell_density [9]
+-----------------------------------------------
+                0.32    2.03    1599/1599        main [1]
+[10]     3.2    0.32    2.03    1599         special_cells [10]
+                1.90    0.00 204672000/204672000     lbm_cell_type_t_get_cell [11]
+                0.13    0.00 1440699/1440699     compute_bounce_back [14]
+                0.00    0.00 1440699/4131772827     Mesh_get_cell [8]
+-----------------------------------------------
+                1.90    0.00 204672000/204672000     special_cells [10]
+[11]     2.6    1.90    0.00 204672000         lbm_cell_type_t_get_cell [11]
+-----------------------------------------------
+                0.02    0.44      32/32          save_frame_all_domain [13]
+[12]     0.6    0.02    0.44      32         save_frame [12]
+                0.32    0.00 4096000/208768000     get_cell_velocity [6]
+                0.10    0.00 4096000/208768000     get_cell_density [9]
+                0.01    0.00 4096000/3692927008     get_vect_norme_2 [7]
+                0.00    0.00 8192000/8192000     Mesh_get_cell [18]
+-----------------------------------------------
+                0.00    0.46      32/32          main [1]
+[13]     0.6    0.00    0.46      32         save_frame_all_domain [13]
+                0.02    0.44      32/32          save_frame [12]
+-----------------------------------------------
+                0.13    0.00 1440699/1440699     special_cells [10]
+[14]     0.2    0.13    0.00 1440699         compute_bounce_back [14]
+-----------------------------------------------
+                0.00    0.05       2/2           main [1]
+[15]     0.1    0.00    0.05       2         setup_init_state [15]
+                0.02    0.03       2/2           setup_init_state_global_poiseuille_profile [16]
+                0.00    0.00       2/2           setup_init_state_border [17]
+                0.00    0.00       2/2           setup_init_state_circle_obstacle [31]
+-----------------------------------------------
+                0.02    0.03       2/2           setup_init_state [15]
+[16]     0.1    0.02    0.03       2         setup_init_state_global_poiseuille_profile [16]
+                0.01    0.01 2338632/1844415504     compute_equilibrium_profile [4]
+                0.00    0.00 2338632/2338632     helper_compute_poiseuille [21]
+                0.00    0.00 2338632/2367504     Mesh_get_cell [20]
+                0.00    0.00 2338632/2369946     lbm_cell_type_t_get_cell [19]
+-----------------------------------------------
+                0.00    0.00       2/2           setup_init_state [15]
+[17]     0.0    0.00    0.00       2         setup_init_state_border [17]
+                0.00    0.00   28872/1844415504     compute_equilibrium_profile [4]
+                0.00    0.00   29512/2369946     lbm_cell_type_t_get_cell [19]
+                0.00    0.00   28872/2367504     Mesh_get_cell [20]
+-----------------------------------------------
+                0.00    0.00 8192000/8192000     save_frame [12]
+[18]     0.0    0.00    0.00 8192000         Mesh_get_cell [18]
+-----------------------------------------------
+                0.00    0.00    1802/2369946     setup_init_state_circle_obstacle [31]
+                0.00    0.00   29512/2369946     setup_init_state_border [17]
+                0.00    0.00 2338632/2369946     setup_init_state_global_poiseuille_profile [16]
+[19]     0.0    0.00    0.00 2369946         lbm_cell_type_t_get_cell [19]
+-----------------------------------------------
+                0.00    0.00   28872/2367504     setup_init_state_border [17]
+                0.00    0.00 2338632/2367504     setup_init_state_global_poiseuille_profile [16]
+[20]     0.0    0.00    0.00 2367504         Mesh_get_cell [20]
+-----------------------------------------------
+                0.00    0.00 2338632/2338632     setup_init_state_global_poiseuille_profile [16]
+[21]     0.0    0.00    0.00 2338632         helper_compute_poiseuille [21]
+-----------------------------------------------
+                0.00    0.00   15990/15990       lbm_comm_ghost_exchange [25]
+[22]     0.0    0.00    0.00   15990         lbm_comm_sync_ghosts_diagonal [22]
+-----------------------------------------------
+                0.00    0.00    9594/9594        lbm_comm_ghost_exchange [25]
+[23]     0.0    0.00    0.00    9594         lbm_comm_sync_ghosts_horizontal [23]
+-----------------------------------------------
+                0.00    0.00    6396/6396        lbm_comm_ghost_exchange [25]
+[24]     0.0    0.00    0.00    6396         lbm_comm_sync_ghosts_vertical [24]
+-----------------------------------------------
+                0.00    0.00    1599/1599        main [1]
+[25]     0.0    0.00    0.00    1599         lbm_comm_ghost_exchange [25]
+                0.00    0.00   15990/15990       lbm_comm_sync_ghosts_diagonal [22]
+                0.00    0.00    9594/9594        lbm_comm_sync_ghosts_horizontal [23]
+                0.00    0.00    6396/6396        lbm_comm_sync_ghosts_vertical [24]
+-----------------------------------------------
+                0.00    0.00       8/8           lbm_comm_init [33]
+[26]     0.0    0.00    0.00       8         helper_get_rank_id [26]
+-----------------------------------------------
+                0.00    0.00       4/4           main [1]
+[27]     0.0    0.00    0.00       4         lbm_comm_height [27]
+-----------------------------------------------
+                0.00    0.00       4/4           main [1]
+[28]     0.0    0.00    0.00       4         lbm_comm_width [28]
+-----------------------------------------------
+                0.00    0.00       3/3           main [1]
+[29]     0.0    0.00    0.00       3         Mesh_init [29]
+-----------------------------------------------
+                0.00    0.00       3/3           main [1]
+[30]     0.0    0.00    0.00       3         Mesh_release [30]
+-----------------------------------------------
+                0.00    0.00       2/2           setup_init_state [15]
+[31]     0.0    0.00    0.00       2         setup_init_state_circle_obstacle [31]
+                0.00    0.00    1802/2369946     lbm_cell_type_t_get_cell [19]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[32]     0.0    0.00    0.00       1         close_file [32]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[33]     0.0    0.00    0.00       1         lbm_comm_init [33]
+                0.00    0.00       8/8           helper_get_rank_id [26]
+                0.00    0.00       1/1           lbm_helper_pgcd [36]
+                0.00    0.00       1/1           lbm_comm_print [34]
+-----------------------------------------------
+                0.00    0.00       1/1           lbm_comm_init [33]
+[34]     0.0    0.00    0.00       1         lbm_comm_print [34]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[35]     0.0    0.00    0.00       1         lbm_comm_release [35]
+-----------------------------------------------
+                0.00    0.00       1/1           lbm_comm_init [33]
+[36]     0.0    0.00    0.00       1         lbm_helper_pgcd [36]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[37]     0.0    0.00    0.00       1         lbm_mesh_type_t_init [37]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[38]     0.0    0.00    0.00       1         lbm_mesh_type_t_release [38]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[39]     0.0    0.00    0.00       1         load_config [39]
+                0.00    0.00       1/1           setup_default_values [42]
+                0.00    0.00       1/1           update_derived_parameter [43]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[40]     0.0    0.00    0.00       1         open_output_file [40]
+                0.00    0.00       1/1           write_file_header [44]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[41]     0.0    0.00    0.00       1         print_config [41]
+-----------------------------------------------
+                0.00    0.00       1/1           load_config [39]
+[42]     0.0    0.00    0.00       1         setup_default_values [42]
+-----------------------------------------------
+                0.00    0.00       1/1           load_config [39]
+[43]     0.0    0.00    0.00       1         update_derived_parameter [43]
+-----------------------------------------------
+                0.00    0.00       1/1           open_output_file [40]
+[44]     0.0    0.00    0.00       1         write_file_header [44]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [18] Mesh_get_cell          [11] lbm_cell_type_t_get_cell [1] main
+   [8] Mesh_get_cell          [19] lbm_cell_type_t_get_cell [40] open_output_file
+  [20] Mesh_get_cell          [25] lbm_comm_ghost_exchange [41] print_config
+  [29] Mesh_init              [27] lbm_comm_height         [5] propagation
+  [30] Mesh_release           [33] lbm_comm_init          [12] save_frame
+  [32] close_file             [34] lbm_comm_print         [13] save_frame_all_domain
+   [2] collision              [35] lbm_comm_release       [42] setup_default_values
+  [14] compute_bounce_back    [22] lbm_comm_sync_ghosts_diagonal [15] setup_init_state
+   [3] compute_cell_collision [23] lbm_comm_sync_ghosts_horizontal [17] setup_init_state_border
+   [4] compute_equilibrium_profile [24] lbm_comm_sync_ghosts_vertical [31] setup_init_state_circle_obstacle
+   [9] get_cell_density       [28] lbm_comm_width         [16] setup_init_state_global_poiseuille_profile
+   [6] get_cell_velocity      [36] lbm_helper_pgcd        [10] special_cells
+   [7] get_vect_norme_2       [37] lbm_mesh_type_t_init   [43] update_derived_parameter
+  [21] helper_compute_poiseuille [38] lbm_mesh_type_t_release [44] write_file_header
+  [26] helper_get_rank_id     [39] load_config

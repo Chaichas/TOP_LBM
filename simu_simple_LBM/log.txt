@@ -1,7 +1,9 @@
-File /home/aicha/Downloads/test_philosophers/philosophers.otf
+File lbm.trace
 
+Errors :
+0 : status file error
 
 Warnings :
-0 : DefVersion definition is actually not handled in ViTE
+0 : open file error
 
-Your trace has 0 errors and 1 warnings.
+Your trace has 1 errors and 1 warnings.

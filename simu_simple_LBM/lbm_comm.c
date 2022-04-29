@@ -234,12 +234,12 @@ void lbm_comm_sync_ghosts_vertical( lbm_comm_t * mesh, Mesh *mesh_to_process, lb
 	switch (comm_type)
 	{
 		case COMM_SEND:
-			for ( x = 1 ; x < mesh_to_process->width - 2 ; x++)
+			for ( x = 1 ; x < mesh_to_process->width - 1 ; x++)
 				for ( k = 0 ; k < DIRECTIONS ; k++)
 					MPI_Send( &Mesh_get_cell(mesh_to_process, x, y)[k], 1, MPI_DOUBLE, target_rank, 0, MPI_COMM_WORLD);
 			break;
 		case COMM_RECV:
-			for ( x = 1 ; x < mesh_to_process->width - 2 ; x++)
+			for ( x = 1 ; x < mesh_to_process->width - 1 ; x++)
 				for ( k = 0 ; k < DIRECTIONS ; k++)
 					//MPI_Recv( &Mesh_get_cell(mesh_to_process, x, y)[k], DIRECTIONS, MPI_DOUBLE, target_rank, 0, MPI_COMM_WORLD,&status);
 					MPI_Recv( &Mesh_get_cell(mesh_to_process, x, y)[k], 1, MPI_DOUBLE, target_rank, 0, MPI_COMM_WORLD,&status);
@@ -308,8 +308,8 @@ void lbm_comm_ghost_exchange(lbm_comm_t * mesh, Mesh *mesh_to_process )
 	MPI_Barrier(MPI_COMM_WORLD);
 
 	//bottom left
-	lbm_comm_sync_ghosts_diagonal(mesh,mesh_to_process,COMM_SEND,mesh->corner_id[CORNER_BOTTOM_LEFT],1,mesh->height - 2);
-	lbm_comm_sync_ghosts_diagonal(mesh,mesh_to_process,COMM_RECV,mesh->corner_id[CORNER_TOP_RIGHT],mesh->width - 1,0);
+	//lbm_comm_sync_ghosts_diagonal(mesh,mesh_to_process,COMM_SEND,mesh->corner_id[CORNER_BOTTOM_LEFT],1,mesh->height - 2);
+	//lbm_comm_sync_ghosts_diagonal(mesh,mesh_to_process,COMM_RECV,mesh->corner_id[CORNER_TOP_RIGHT],mesh->width - 1,0);
 
 	//prevend comm mixing to avoid bugs
 	MPI_Barrier(MPI_COMM_WORLD);
@@ -322,8 +322,8 @@ void lbm_comm_ghost_exchange(lbm_comm_t * mesh, Mesh *mesh_to_process )
 	MPI_Barrier(MPI_COMM_WORLD);
 
 	// Right to left phase : on reçoit à gauche et on envoie depuis la droite
-	lbm_comm_sync_ghosts_horizontal(mesh,mesh_to_process,COMM_SEND,mesh->left_id,1);
-	lbm_comm_sync_ghosts_horizontal(mesh,mesh_to_process,COMM_RECV,mesh->right_id,mesh->width - 1);
+	//lbm_comm_sync_ghosts_horizontal(mesh,mesh_to_process,COMM_SEND,mesh->left_id,1);
+	//lbm_comm_sync_ghosts_horizontal(mesh,mesh_to_process,COMM_RECV,mesh->right_id,mesh->width - 1);
 	
 	//wait for IO to finish, VERY important, do not remove.
 	//FLUSH_INOUT();
