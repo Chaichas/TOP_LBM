@@ -46,6 +46,7 @@ double get_vect_norme_2(const Vector vect1,const Vector vect2)
 	int k;
 	double res = 0.0;
 
+	#pragma ... vectorize
 	//loop on dimensions
 	for ( k = 0 ; k < DIMENSIONS ; k++)
 		res += vect1[k] * vect2[k];
@@ -96,6 +97,7 @@ void get_cell_velocity(Vector v,const lbm_mesh_cell_t cell,double cell_density)
 		//reset value
 		v[d] = 0.0;
 
+		//vectorize with reduce
 		//sum all directions
 		for ( k = 0 ; k < DIRECTIONS ; k++)
 			v[d] += cell[k] * direction_matrix[k][d];
