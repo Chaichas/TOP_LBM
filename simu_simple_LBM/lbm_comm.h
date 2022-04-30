@@ -11,31 +11,23 @@
 #define RANK_MASTER 0
 
 /** Definition pour communication asynchrone verticale. **/
+#define TOP_LINE_SEND 0
+#define TOP_LINE_RECV 1
+#define BOTTOM_LINE_SEND 2
+#define BOTTOM_LINE_RECV 3
 
 /*********************  ENUM  ***********************/
 /**
  * Definition des différents type de cellule pour savoir quel traitement y appliquer
  * lors du calcul.
 **/
-/* typedef enum lbm_corner_pos_e
+typedef enum lbm_corner_pos_e
 {
 	CORNER_TOP_LEFT = 0,
 	CORNER_TOP_RIGHT = 1,
 	CORNER_BOTTOM_LEFT = 2,
 	CORNER_BOTTOM_RIGHT = 3,
-} lbm_corner_pos_t; */
-
-typedef enum lbm_pos_e
-{
-	CORNER_TOP_LEFT = 0,
-	CORNER_TOP_RIGHT = 1,
-	CORNER_BOTTOM_LEFT = 2,
-	CORNER_BOTTOM_RIGHT = 3,
-	LEFT_COL = 4,
-	RIGHT_COL = 5,
-	TOP_LINE = 6,
-	BOTTOM_LINE = 7,
-} lbm_pos_t;
+} lbm_corner_pos_t;
 
 /*********************  ENUM  ***********************/
 typedef enum lbm_comm_type_e
