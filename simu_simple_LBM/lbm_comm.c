@@ -76,12 +76,16 @@ void lbm_comm_init( lbm_comm_t * mesh_comm, int rank, int comm_size, int width, 
 	int rank_x;
 	int rank_y;
 	//Version incoherente
-	nb_y = lbm_helper_pgcd(comm_size,height);
-	nb_x = comm_size/nb_y;
+	/* nb_y = lbm_helper_pgcd(comm_size,width);
+	nb_x = comm_size/nb_y; */
 	
-	// Version coherente
-	//nb_x = lbm_helper_pgcd(comm_size,width);
-	//nb_y = comm_size / nb_x;
+	//Version coherente (horizontal)
+	/* nb_y = lbm_helper_pgcd(comm_size,height);
+	nb_x = comm_size/nb_y;*/
+	
+	// Version verticale (decoupage)
+	nb_x = lbm_helper_pgcd(comm_size,width);
+	nb_y = comm_size / nb_x;
 
 	//Horizontal
 	// nb_y = lbm_helper_pgcd(comm_size,height);
