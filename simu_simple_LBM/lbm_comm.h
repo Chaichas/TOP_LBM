@@ -68,6 +68,7 @@ typedef struct lbm_comm_t_s
 	/** Requète asynchrone en cours. **/
 	//MPI_Request requests[32];
 	MPI_Request requests[16];
+	int id_req;
 	//lbm_mesh_cell_t buffer;
 	lbm_mesh_cell_t buffer_upper_send;
 	lbm_mesh_cell_t buffer_upper_recv;

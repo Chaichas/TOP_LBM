@@ -167,7 +167,7 @@ int main(int argc, char * argv[])
 	//barrier to wait all before start
 	//MPI_Barrier(MPI_COMM_WORLD);
 
-	//time steps
+	//time stepsk
 	for ( i = 1 ; i < ITERATIONS ; i++ )
 	{
 		//print progress
