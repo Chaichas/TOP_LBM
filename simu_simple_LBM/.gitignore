@@ -1,0 +1,11 @@
+/display
+/lbm
+/lbm_comm.o
+/lbm_config.o
+/lbm_init.o
+/lbm_phys.o
+/lbm_struct.o
+/log.txt
+/main.o
+/output.gif
+/resultat.raw
