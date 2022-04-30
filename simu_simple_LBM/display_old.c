@@ -144,12 +144,7 @@ void print_current_frame_gnuplot(lbm_data_file_t * file)
 					pos = line_height * i + j + l * line_height * file->header.mesh_width;
 					printf("%d %d %f %f\n",i,j+l * line_height,file->entries[pos].density,file->entries[pos].v);
 			}
-		}
-		printf("\n");
-	}
-	printf("\n");
-}
-
+		}checksum
 /*******************  FUNCTION  *********************/
 
 double checksum = 0;

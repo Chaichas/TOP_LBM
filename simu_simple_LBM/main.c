@@ -198,7 +198,7 @@ int main(int argc, char * argv[])
 		if ( i % WRITE_STEP_INTERVAL == 0 && lbm_gbl_config.output_filename != NULL )
 			save_frame_all_domain(fp, &mesh, &temp_render );
 		
-		fprintf(stderr, "rank %d: Before end of loop \n", rank);
+		//fprintf(stderr, "rank %d: Before end of loop \n", rank);
 	}
 
 	if( rank == RANK_MASTER && fp != NULL)
@@ -206,7 +206,7 @@ int main(int argc, char * argv[])
 		close_file(fp);
 	}
 
-	fprintf(stderr, "rank %d: After closing the file \n", rank);
+	//fprintf(stderr, "rank %d: After closing the file \n", rank);
 
 	//free memory
 	lbm_comm_release( &mesh_comm );
