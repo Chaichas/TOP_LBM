@@ -10,18 +10,32 @@
 /** Definition de l'ID du processus maître. **/
 #define RANK_MASTER 0
 
+/** Definition pour communication asynchrone verticale. **/
+
 /*********************  ENUM  ***********************/
 /**
  * Definition des différents type de cellule pour savoir quel traitement y appliquer
  * lors du calcul.
 **/
-typedef enum lbm_corner_pos_e
+/* typedef enum lbm_corner_pos_e
 {
 	CORNER_TOP_LEFT = 0,
 	CORNER_TOP_RIGHT = 1,
 	CORNER_BOTTOM_LEFT = 2,
 	CORNER_BOTTOM_RIGHT = 3,
-} lbm_corner_pos_t;
+} lbm_corner_pos_t; */
+
+typedef enum lbm_pos_e
+{
+	CORNER_TOP_LEFT = 0,
+	CORNER_TOP_RIGHT = 1,
+	CORNER_BOTTOM_LEFT = 2,
+	CORNER_BOTTOM_RIGHT = 3,
+	LEFT_COL = 4,
+	RIGHT_COL = 5,
+	TOP_LINE = 6,
+	BOTTOM_LINE = 7,
+} lbm_pos_t;
 
 /*********************  ENUM  ***********************/
 typedef enum lbm_comm_type_e
@@ -52,8 +66,13 @@ typedef struct lbm_comm_t_s
 	int bottom_id;
 	int corner_id[4];
 	/** Requète asynchrone en cours. **/
-	MPI_Request requests[32];
-	lbm_mesh_cell_t buffer;
+	//MPI_Request requests[32];
+	MPI_Request requests[16];
+	//lbm_mesh_cell_t buffer;
+	lbm_mesh_cell_t buffer_upper_send;
+	lbm_mesh_cell_t buffer_upper_recv;
+	lbm_mesh_cell_t buffer_lower_send;
+	lbm_mesh_cell_t buffer_lower_recv;
 } lbm_comm_t;
 
 /*******************  FUNCTION  *********************/
@@ -75,7 +94,8 @@ void  lbm_comm_print( lbm_comm_t *mesh );
 
 /*******************  FUNCTION  *********************/
 void lbm_comm_sync_ghosts_wait( lbm_comm_t * mesh );
-void lbm_comm_ghost_exchange(lbm_comm_t * mesh, Mesh *mesh_to_process );
+//void lbm_comm_ghost_exchange(lbm_comm_t * mesh, Mesh *mesh_to_process );
+void lbm_comm_async_ghost_exchange(lbm_comm_t * mesh, Mesh *mesh_to_process );
 
 /*******************  FUNCTION  *********************/
 void save_frame_all_domain( FILE * fp, Mesh *source_mesh, Mesh *temp );
