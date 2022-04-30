@@ -1,6 +1,6 @@
-iterations           = 10000
-width                = 300
-height               = 160
+iterations           = 160000
+width                = 800
+height               = 150
 #obstacle_r           = 
 #obstacle_x           = 
 #obstacle_y           = 
