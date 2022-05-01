@@ -16,10 +16,10 @@ void Mesh_init( Mesh * mesh, int width,  int height )
 	mesh->height = height;
 
 	//alloc cells memory
-	mesh->cells = malloc( width * height  * DIRECTIONS * sizeof( double ) );
+	mesh->cells = malloc( width * height  * DIRECTIONS * sizeof( double ) ); //memory allocation of mesh->cells
 	//mesh->cells = NULL;
 
-	//errors
+	//errors --> test for memory allocation
 	if( mesh->cells == NULL )
 	{
 		perror( "malloc" );

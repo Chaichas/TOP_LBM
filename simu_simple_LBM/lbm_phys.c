@@ -5,7 +5,7 @@
 #include "lbm_struct.h"
 #include "lbm_phys.h"
 #include "lbm_comm.h"
-#include <omp.h>
+//#include <omp.h> //when using omp
 
 /********************** CONSTS **********************/
 /**
@@ -47,7 +47,7 @@ double get_vect_norme_2(const Vector vect1,const Vector vect2)
 	int k;
 	double res = 0.0;
 
-	//#pragma omp simd reduction(+:res)
+	//#pragma omp simd reduction(+:res) //vectorization
 	//loop on dimensions
 	for ( k = 0 ; k < DIMENSIONS ; k++)
 		res += vect1[k] * vect2[k];
@@ -98,7 +98,7 @@ void get_cell_velocity(Vector v,const lbm_mesh_cell_t cell,double cell_density)
 		//reset value
 		v[d] = 0.0;
 
-		//#pragma omp simd reduction(+:v[d]) //vectorize loop
+		//#pragma omp simd reduction(+:v[d]) vectorization
 		//sum all directions
 		for ( k = 0 ; k < DIRECTIONS ; k++)
 			v[d] += cell[k] * direction_matrix[k][d];
@@ -282,7 +282,7 @@ void special_cells(Mesh * mesh, lbm_mesh_type_t * mesh_type, const lbm_comm_t * 
 	//vars
 	int i,j;
 
-	#pragma omp parallel for private (i,j)
+	//#pragma omp parallel for private (i,j) //region parallele avec OpenMp
 	//loop on all inner cells
 	for( i = 1 ; i < mesh->width - 1 ; i++ )
 	{
@@ -321,7 +321,7 @@ void collision(Mesh * mesh_out,const Mesh * mesh_in)
 	assert(mesh_in->height == mesh_out->height);
 
 	//loop on all inner cells
-	for( i = 1 ; i < mesh_in->width - 1 ; i++  )
+	for( i = 1 ; i < mesh_in->width - 1 ; i++  ) //ordonnencement de boucles
 		for( j = 1 ; j < mesh_in->height - 1 ; j++)
 			compute_cell_collision(Mesh_get_cell(mesh_out, i, j),Mesh_get_cell(mesh_in, i, j));
 }
@@ -339,7 +339,7 @@ void propagation(Mesh * mesh_out,const Mesh * mesh_in)
 	int ii,jj;
 
 	//loop on all cells
-	for (i = 0 ; i < mesh_out->width; i++)
+	for (i = 0 ; i < mesh_out->width; i++) //ordonnencement de boucle
 	{
 		for ( j = 0 ; j < mesh_out->height ; j++)
 		{

@@ -5,10 +5,12 @@ RM=rm -f
 MAKEDEPEND=makedepend
 
 #flags
-#CFLAGS=-Wall -pg
-#CFLAGS=-Wall -DNDEBUG -Ofast -march=native -msse4.2
-CFLAGS=-Wall -DNDEBUG -Ofast -march=native -msse4.2 -fopenmp
-LDFLAGS=-lm -fopenmp
+#CFLAGS=-Wall -pg  #flag pour Gprof
+#CFLAGS=-Wall -g  #flag pour debogage
+CFLAGS=-Wall -DNDEBUG -Ofast -march=native -msse4.2 #flags de compilation optimise
+#CFLAGS=-Wall -DNDEBUG -Ofast -march=native -msse4.2 -fopenmp  #flag pour OpenMp
+#LDFLAGS=-lm -fopenmp  #flag pour OpenMp
+LDFLAGS=-lm
 
 #Files
 LBM_SOURCES=main.c lbm_phys.c lbm_init.c lbm_struct.c lbm_comm.c lbm_config.c

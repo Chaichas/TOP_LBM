@@ -23,7 +23,7 @@
 #define REYNOLDS (lbm_gbl_config.reynolds)
 #define KINETIC_VISCOSITY (lbm_gbl_config.kinetic_viscosity)
 #define RELAX_PARAMETER (lbm_gbl_config.relax_parameter)
-#define __FLUSH_INOUT__ concat(s,l,e,e,p)(1)
+#define __FLUSH_INOUT__ concat(s,l,e,e,p)(1) //sleep definit en tant que lettres concatenes dans la macro
 //result filename
 #define RESULT_FILENAME (lbm_gbl_config.output_filename)
 #define RESULT_MAGICK 0x12345

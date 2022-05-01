@@ -11,6 +11,7 @@
 #define RANK_MASTER 0
 
 /** Definition pour communication asynchrone verticale. **/
+//Position des lignes
 #define TOP_LINE_SEND 0
 #define TOP_LINE_RECV 1
 #define BOTTOM_LINE_SEND 2
@@ -59,9 +60,10 @@ typedef struct lbm_comm_t_s
 	int corner_id[4];
 	/** Requète asynchrone en cours. **/
 	//MPI_Request requests[32];
-	MPI_Request requests[16];
-	int id_req;
+	MPI_Request requests[16]; //il y a seulement 16 communications au total (voir section 3.6)
+	int id_req; //identifiant pour le tableau de requetes et aussi le nombre total des requetes a attendre
 	//lbm_mesh_cell_t buffer;
+	//Declaration d'un buffer specifique pour chaque ligne horizontale utilise pour les communications non bloquantes
 	lbm_mesh_cell_t buffer_upper_send;
 	lbm_mesh_cell_t buffer_upper_recv;
 	lbm_mesh_cell_t buffer_lower_send;
@@ -88,7 +90,7 @@ void  lbm_comm_print( lbm_comm_t *mesh );
 /*******************  FUNCTION  *********************/
 void lbm_comm_sync_ghosts_wait( lbm_comm_t * mesh );
 //void lbm_comm_ghost_exchange(lbm_comm_t * mesh, Mesh *mesh_to_process );
-void lbm_comm_async_ghost_exchange(lbm_comm_t * mesh, Mesh *mesh_to_process );
+void lbm_comm_async_ghost_exchange(lbm_comm_t * mesh, Mesh *mesh_to_process ); //communication asynchrone
 
 /*******************  FUNCTION  *********************/
 void save_frame_all_domain( FILE * fp, Mesh *source_mesh, Mesh *temp );

@@ -14,7 +14,7 @@
 typedef double * lbm_mesh_cell_t;
 /** Représentation d'un vecteur pour la manipulation des vitesses macroscopiques. **/
 typedef double Vector[DIMENSIONS];
-//typedef double __attribute__((aligned(16))) Vector[DIMENSIONS];
+//typedef double __attribute__((aligned(16))) Vector[DIMENSIONS]; //alignement de memoire (voir section 3.9)
 
 /********************  STRUCT  **********************/
 /**

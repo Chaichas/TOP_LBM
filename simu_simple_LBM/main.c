@@ -60,7 +60,7 @@ FILE * open_output_file(lbm_comm_t * mesh_comm)
 
 void close_file(FILE* fp){
 	//wait all before closing
-	//MPI_Barrier(MPI_COMM_WORLD);
+	//MPI_Barrier(MPI_COMM_WORLD); //deadlock
 	//close file
 	fclose(fp);
 }
@@ -165,7 +165,7 @@ int main(int argc, char * argv[])
 		save_frame_all_domain(fp, &mesh, &temp_render );
 
 	//barrier to wait all before start
-	//MPI_Barrier(MPI_COMM_WORLD);
+	//MPI_Barrier(MPI_COMM_WORLD); //no communication --> unecessary barrier
 
 	//time stepsk
 	for ( i = 1 ; i < ITERATIONS ; i++ )
@@ -173,33 +173,33 @@ int main(int argc, char * argv[])
 		//print progress
 		if( rank == RANK_MASTER )
 			printf("Progress [%5d / %5d]\n",i,ITERATIONS);
-			//fprintf(stderr, "Progress [%5d / %5d]\n",i,ITERATIONS);
+			//fprintf(stderr, "Progress [%5d / %5d]\n",i,ITERATIONS); //progress on stderr = coherent avec les autres fprintf
 
 		//compute special actions (border, obstacle...)
 		special_cells( &mesh, &mesh_type, &mesh_comm);
 
-		//need to wait all before doing next step
-		//MPI_Barrier(MPI_COMM_WORLD);
+		//need to wait all before doing next step 
+		//MPI_Barrier(MPI_COMM_WORLD); //no communication --> unecessary barrier
 
 		//compute collision term
 		collision( &temp, &mesh);
 
 		//need to wait all before doing next step
-		//MPI_Barrier(MPI_COMM_WORLD);
+		//MPI_Barrier(MPI_COMM_WORLD); //no communication --> unecessary barrier
 
 		//propagate values from node to neighboors
 		//lbm_comm_ghost_exchange( &mesh_comm, &temp );
-		lbm_comm_async_ghost_exchange( &mesh_comm, &temp );
+		lbm_comm_async_ghost_exchange( &mesh_comm, &temp ); //communication non-bloquante
 		propagation( &mesh, &temp);
 
 		//need to wait all before doing next step
-		//MPI_Barrier(MPI_COMM_WORLD);
+		//MPI_Barrier(MPI_COMM_WORLD); //no communication --> unecessary barrier
 
 		//save step
 		if ( i % WRITE_STEP_INTERVAL == 0 && lbm_gbl_config.output_filename != NULL )
 			save_frame_all_domain(fp, &mesh, &temp_render );
 		
-		//fprintf(stderr, "rank %d: Before end of loop \n", rank);
+		//fprintf(stderr, "rank %d: Before end of loop \n", rank); //utilise pour deboger le deadlock
 	}
 
 	if( rank == RANK_MASTER && fp != NULL)
@@ -207,7 +207,7 @@ int main(int argc, char * argv[])
 		close_file(fp);
 	}
 
-	//fprintf(stderr, "rank %d: After closing the file \n", rank);
+	//fprintf(stderr, "rank %d: After closing the file \n", rank); //utilise pour deboger le deadlock
 
 	//free memory
 	lbm_comm_release( &mesh_comm );
