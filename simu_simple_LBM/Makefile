@@ -7,7 +7,7 @@ MAKEDEPEND=makedepend
 #flags
 #CFLAGS=-Wall -pg
 #CFLAGS=-Wall -DNDEBUG -Ofast -march=native -msse4.2
-CFLAGS=-Wall -Ofast -march=native -msse4.2 -fopenmp
+CFLAGS=-Wall -DNDEBUG -Ofast -march=native -msse4.2 -fopenmp
 LDFLAGS=-lm -fopenmp
 
 #Files
