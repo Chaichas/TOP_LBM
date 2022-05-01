@@ -8,7 +8,7 @@ MAKEDEPEND=makedepend
 #CFLAGS=-Wall -pg
 #CFLAGS=-Wall -DNDEBUG -Ofast -march=native -msse4.2
 CFLAGS=-Wall -Ofast -march=native -msse4.2 -fopenmp
-LDFLAGS=-lm
+LDFLAGS=-lm -fopenmp
 
 #Files
 LBM_SOURCES=main.c lbm_phys.c lbm_init.c lbm_struct.c lbm_comm.c lbm_config.c

@@ -47,7 +47,7 @@ double get_vect_norme_2(const Vector vect1,const Vector vect2)
 	int k;
 	double res = 0.0;
 
-	#pragma omp simd //vectorize loop
+	//#pragma omp simd //vectorize loop
 	//loop on dimensions
 	for ( k = 0 ; k < DIMENSIONS ; k++)
 		res += vect1[k] * vect2[k];
@@ -282,6 +282,7 @@ void special_cells(Mesh * mesh, lbm_mesh_type_t * mesh_type, const lbm_comm_t * 
 	//vars
 	int i,j;
 
+	#pragma omp parallel for private (i,j)
 	//loop on all inner cells
 	for( i = 1 ; i < mesh->width - 1 ; i++ )
 	{
@@ -337,6 +338,7 @@ void propagation(Mesh * mesh_out,const Mesh * mesh_in)
 	int i,j,k;
 	int ii,jj;
 
+	//#pragma omp parallel for private (i,j,k,ii,jj)
 	//loop on all cells
 	for (i = 0 ; i < mesh_out->width; i++)
 	{
